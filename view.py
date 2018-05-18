@@ -6,9 +6,9 @@ from flask import request
 class GetFormResource(Resource):
 
     EMAIL_RE = re.compile(r'(^|\s)[-a-z0-9_.]+@([-a-z0-9]+\.)+[a-z]{2,6}(\s|$)')
-    PHONE_RE = re.compile(r"\s7\s[0-9][0-9][0-9]"
-                          r"\s[0-9][0-9][0-9]"
-                          r"\s[0-9][0-9]\s[0-9][0-9]")
+    PHONE_RE = re.compile(r"\s7\s[1-9][0-9]{2}"
+                          r"\s[1-9][0-9]{2}"
+                          r"\s[0-9]{2}\s[0-9]{2}")
     @classmethod
     def gettype(cls,s):
         type = ''
@@ -34,4 +34,6 @@ class GetFormResource(Resource):
     def post(self):
         #print(request.args.get('c'))7... А НЕ +7...
         #[v for k, v in request.args.items()]
-        return {k:GetFormResource.gettype(v) for k,v in request.args.items()}
+        args_dict = {k:GetFormResource.gettype(v) for k,v in request.args.items()}
+        #TODO:сравнение с полями базы(if case)
+        return args_dict
