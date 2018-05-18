@@ -1,6 +1,6 @@
 import re, datetime
 from flask_restful import Resource
-#from db import db
+from db import db
 #from flask import request
 
 class GetFormResource(Resource):
@@ -31,4 +31,4 @@ class GetFormResource(Resource):
 
     def post(self):
         s = '@asdasdasd.com'
-        return self.gettype(s)
+        return 'DB: {} && type:{}'.format(db.all(),GetFormResource.gettype(s))
