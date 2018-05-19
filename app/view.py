@@ -1,7 +1,10 @@
-import re, datetime
-from flask_restful import Resource
-from db import db
+import datetime
+import re
 from flask import request
+from flask_restful import Resource
+
+from app import db
+
 
 class GetFormResource(Resource):
 
