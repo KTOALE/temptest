@@ -9,9 +9,9 @@ api = Api(app)
 
 @app.route("/")
 def main():
-    return "<http>HERE WE ARE</http>"
+    return "HERE WE ARE"
 
 api.add_resource(GetFormResource, '/get_form')
 
 if __name__=="__main__":
-    app.run(port=7777, debug=True)
+    app.run(port=7777, debug=False)
