@@ -29,7 +29,6 @@ class GetFormResource(Resource):
     def fieldsmatch(tempfields, request):
         ltf = len(tempfields.keys())
         lrtf = len(request.keys())
-        print('{} : {}'.format(ltf,lrtf))
         result = False
         if ltf <= lrtf:
             for tf in tempfields:
@@ -47,9 +46,7 @@ class GetFormResource(Resource):
 
 
     def post(self):
-        #print(request.args.get('c'))7... А НЕ +7...
-        #[v for k, v in request.args.items()]
-        #TODO:сравнение с полями базы(if case)
+        #TODO:print(request.args.get('c'))7... А НЕ +7...
         result = {k:GetFormResource.gettype(v) for k,v in request.args.items()}
         for i in db.all():
             if GetFormResource.fieldsmatch(i.get('fields'), result):

@@ -13,3 +13,7 @@ if __name__=="__main__":
     db.insert({'name': 'temp8', 'fields': {'f1': 'email', 'f2': 'email'}})
     db.insert({'name': 'temp9', 'fields': {'f1': 'phone', 'f2': 'phone'}})
     db.insert({'name': 'temp10', 'fields': {'f1': 'text', 'f2': 'text'}})
+    db.insert({'name': 'temp11', 'fields': {'f1': 'email', 'f2': 'date', 'f3': 'phone'}})
+    db.insert({'name': 'temp12', 'fields': {'f1': 'email', 'f2': 'email', 'f3': 'phone'}})
+    db.insert({'name': 'temp13', 'fields': {'f1': 'email', 'f2': 'date', 'f3': 'phone', 'f4': 'text'}})
+    db.insert({'name': 'temp14', 'fields': {'f1': 'email', 'f2': 'date', 'f3': 'phone', 'f4': 'date'}})
