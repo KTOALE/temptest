@@ -10,7 +10,7 @@ from db import db
 class GetFormResource(Resource):
 
     EMAIL_RE = re.compile(r'(^|\s)[-a-z0-9_.]+@([-a-z0-9]+\.)+[a-z]{2,6}(\s|$)')
-    PHONE_RE = re.compile(r"\s7\s[1-9][0-9]{2}"
+    PHONE_RE = re.compile(r"[+]7\s[1-9][0-9]{2}"
                           r"\s[0-9]{3}"
                           r"\s[0-9]{2}\s[0-9]{2}")
     @classmethod
