@@ -25,6 +25,10 @@ class GetFormResource(Resource):
 
         return type
 
+    @staticmethod
+    def gettempname(tempfields, request):
+        #TODO: реализовать проверку
+        return None
 
     def get(self):
         #+7%20916%20243%2032 % 2003
@@ -34,6 +38,12 @@ class GetFormResource(Resource):
     def post(self):
         #print(request.args.get('c'))7... А НЕ +7...
         #[v for k, v in request.args.items()]
-        args_dict = {k:GetFormResource.gettype(v) for k,v in request.args.items()}
         #TODO:сравнение с полями базы(if case)
-        return args_dict
+        result = {k:GetFormResource.gettype(v) for k,v in request.args.items()}
+        for i in db.all():
+            #print(i.get('fields').values())
+            name = GetFormResource.gettempname(i.get('fields'), result)
+            if name:
+                result = name
+                break
+        return result
