@@ -27,13 +27,19 @@ class GetFormResource(Resource):
 
     @staticmethod
     def fieldsmatch(tempfields, request):
-        #TODO: реализовать проверку до конца
         ltf = len(tempfields.keys())
         lrtf = len(request.keys())
         print('{} : {}'.format(ltf,lrtf))
+        result = False
         if ltf <= lrtf:
-            return True
-        return None
+            for tf in tempfields:
+                if tf in request.keys() and \
+                   request.get(tf) == tempfields.get(tf):
+                    result = True
+                else:
+                    result = False
+                    break
+        return result
 
     def get(self):
         #+7%20916%20243%2032 % 2003
@@ -46,8 +52,7 @@ class GetFormResource(Resource):
         #TODO:сравнение с полями базы(if case)
         result = {k:GetFormResource.gettype(v) for k,v in request.args.items()}
         for i in db.all():
-            matchfound = GetFormResource.fieldsmatch(i.get('fields'), result)
-            if matchfound:
+            if GetFormResource.fieldsmatch(i.get('fields'), result):
                 result = i.get('name')
                 break
         return result
