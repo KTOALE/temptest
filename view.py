@@ -26,8 +26,13 @@ class GetFormResource(Resource):
         return type
 
     @staticmethod
-    def gettempname(tempfields, request):
-        #TODO: реализовать проверку
+    def fieldsmatch(tempfields, request):
+        #TODO: реализовать проверку до конца
+        ltf = len(tempfields.keys())
+        lrtf = len(request.keys())
+        print('{} : {}'.format(ltf,lrtf))
+        if ltf <= lrtf:
+            return True
         return None
 
     def get(self):
@@ -41,9 +46,8 @@ class GetFormResource(Resource):
         #TODO:сравнение с полями базы(if case)
         result = {k:GetFormResource.gettype(v) for k,v in request.args.items()}
         for i in db.all():
-            #print(i.get('fields').values())
-            name = GetFormResource.gettempname(i.get('fields'), result)
-            if name:
-                result = name
+            matchfound = GetFormResource.fieldsmatch(i.get('fields'), result)
+            if matchfound:
+                result = i.get('name')
                 break
         return result
