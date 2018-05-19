@@ -1,9 +1,10 @@
 import datetime
 import re
+
 from flask import request
 from flask_restful import Resource
 
-from app.db import db
+from db import db
 
 
 class GetFormResource(Resource):

@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from app.view import GetFormResource
+from view import GetFormResource
 
 app = Flask(__name__)
 
