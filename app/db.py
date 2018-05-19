@@ -1,4 +1,6 @@
-from app import db
+from tinydb import TinyDB
+
+db = TinyDB('templates')
 
 if __name__=="__main__":
     db.insert({'name': 'temp1', 'fields': {'f1': 'email', 'f2': 'date'}})
