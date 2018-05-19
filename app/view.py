@@ -10,7 +10,7 @@ from db import db
 class GetFormResource(Resource):
 
     EMAIL_RE = re.compile(r'(^|\s)[-a-z0-9_.]+@([-a-z0-9]+\.)+[a-z]{2,6}(\s|$)')
-    PHONE_RE = re.compile(r"[+]7\s[1-9][0-9]{2}"
+    PHONE_RE = re.compile(r"8\s[1-9][0-9]{2}"
                           r"\s[0-9]{3}"
                           r"\s[0-9]{2}\s[0-9]{2}")
     @classmethod
@@ -45,12 +45,9 @@ class GetFormResource(Resource):
         return result
 
     def get(self):
-        #+7%20916%20243%2032 % 2003
-        return "<http>You need to use POST method</http>"
-
+        return "You need to use POST method"
 
     def post(self):
-        #TODO:print(request.args.get('c'))7... А НЕ +7...
         result = {k:GetFormResource.gettype(v) for k,v in request.args.items()}
         for i in db.all():
             if GetFormResource.fieldsmatch(i.get('fields'), result):
